@@ -13,7 +13,7 @@ MusicLDM is a text-to-music generation model that is only trained on 10000 songs
 
 Generation demos: [musicldm.github.io](https://musicldm.github.io/).
 
-MusicLDM is also support and embedded in [Hugging Face Diffusers](https://huggingface.co/docs/diffusers/api/pipelines/musicldm) along with the [API](https://huggingface.co/spaces/ircam-reach/musicldm-text-to-music) to quickly try out the generation!
+MusicLDM is also supported and embedded in [Hugging Face Diffusers](https://huggingface.co/docs/diffusers/api/pipelines/musicldm) along with the [API](https://huggingface.co/spaces/ircam-reach/musicldm-text-to-music) to quickly try out the generation!
 
 In this repo, we also provide the inference code to run the MusicLDM. Due to our research policy, we are not able to provide the training script, but you are free to plugin your own audio dataset loader and your own dataset to establish the training of MusicLDM. 
 
