@@ -1,0 +1,130 @@
+project_name: "controllable-text-to-music-audiostock10k"
+log_directory: "/graft1/code/kechen/musicldm/log" # Replace
+cache_location: "/graft1/code/kechen/musicldm/cache" # Replace
+test_mode: True
+
+id: 
+  version: "v1"
+  name: "musicldm-audiostock-10k-latentmixup"
+
+augmentation:
+  mixup: 0.0
+  return_all_wav: False
+  balanced_sampling: False
+
+preprocessing:
+  label:
+    norm: True
+    top_k: 527
+    quantization: False
+    threshold: 0.01
+    label_use_original_ground_truth: False
+  audio:
+    sampling_rate: 16000
+    max_wav_value: 32768.0
+  stft:
+    filter_length: 1024
+    hop_length: 160
+    win_length: 1024
+  mel:
+    n_mel_channels: 64 
+    mel_fmin: 0
+    mel_fmax: 8000 
+    freqm: 0
+    timem: 0
+    blur: False
+    target_length: 1024
+
+model:
+  target: latent_diffusion.models.musicldm.MusicLDM
+  num_workers: 8
+  params:
+    base_learning_rate: 3.0e-05
+    batchsize: 1
+    linear_start: 0.0015
+    linear_end: 0.0195
+    num_timesteps_cond: 1
+    log_every_t: 200
+    timesteps: 1000
+    first_stage_key: fbank
+    cond_stage_key: waveform 
+    latent_t_size: 256 
+    latent_f_size: 16 
+    channels: 8 
+    cond_stage_trainable: true
+    latent_mixup: 0.0
+    conditioning_key: film
+    monitor: val/loss_simple_ema
+    scale_by_std: true
+    ckpt_path: '/graft1/code/kechen/musicldm/ckpt/musicldm-ckpt.ckpt' # Replace
+    unet_config:
+      target: latent_diffusion.modules.diffusionmodules.openaimodel.UNetModel
+      params:
+        image_size: 64 
+        extra_film_condition_dim: 512
+        extra_film_use_concat: true
+        in_channels: 8 
+        out_channels: 8 
+        model_channels: 128 
+        no_condition: false
+        attention_resolutions:
+        - 8
+        - 4
+        - 2
+        num_res_blocks: 2
+        channel_mult:
+        - 1
+        - 2
+        - 3
+        - 5
+        num_head_channels: 32
+        use_spatial_transformer: true
+    first_stage_config:
+      base_learning_rate: 4.5e-05
+      target: latent_encoder.autoencoder.AutoencoderKL
+      params:
+        reload_from_ckpt: '/graft1/code/kechen/musicldm/ckpt/vae-ckpt.ckpt' # Replace
+        batchsize: 4
+        monitor: val/rec_loss
+        image_key: fbank
+        subband: 1
+        embed_dim: 8 
+        time_shuffle: 1
+        mel_num: 64 
+        lossconfig:
+          target: latent_diffusion.modules.losses.LPIPSWithDiscriminator
+          params:
+            disc_start: 50001
+            kl_weight: 1.0
+            disc_weight: 0.5
+            disc_in_channels: 1
+        ddconfig:
+          mel_num: 64
+          hifigan_ckpt: '/graft1/code/kechen/musicldm/ckpt/hifigan-ckpt(only generator).ckpt' # Replace
+          double_z: true
+          z_channels: 8 
+          resolution: 256
+          downsample_time: false
+          in_channels: 1
+          out_ch: 1
+          ch: 128
+          ch_mult:
+          - 1
+          - 2
+          - 4
+          num_res_blocks: 2
+          attn_resolutions: []
+          dropout: 0.0
+
+    cond_stage_config:
+      target: latent_diffusion.modules.encoders.modules.CLAPAudioEmbeddingClassifierFreev2
+      params:
+        pretrained_path: '/graft1/code/kechen/musicldm/ckpt/clap-ckpt.pt' # Replace
+        sampling_rate: 16000
+        embed_mode: audio 
+        unconditional_prob: 0.1
+
+    evaluation_params:
+      unconditional_guidance_scale: 2.0
+      ddim_sampling_steps: 200
+      n_candidates_per_samples: 5
