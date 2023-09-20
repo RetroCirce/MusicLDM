@@ -22,10 +22,10 @@ Currently, MusicLDM is able to generate the music samples of 16 kHz. Benefiting 
 ### Checklist:
 
 - [x] MusicLDM Inference on 16 kHz music samples
-- [x] Hugging Face Support
+- [x] Hugging Face Support (see [Diffusers](#hugging-face--diffusers))
 - [x] 10-sec generation support
+- [ ] variable-length generation support (possible already with [Diffusers](#hugging-face--diffusers))
 - [ ] 44.1 kHz generation support
-- [ ] variable-length generation support
 - [ ] MusicLDM ckpt trained on large-scale datasets.
 
 
