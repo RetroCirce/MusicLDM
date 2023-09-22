@@ -104,7 +104,7 @@ You will find your username folder under this path, and you can check the genera
 ## Hugging Face 🧨 Diffusers
 
 MusicLDM is available in the Hugging Face [🧨 Diffusers](https://github.com/huggingface/diffusers) library from v0.21.0 
-onwards. The official checkpoints can be found on the [Hugging Face Hub](https://huggingface.co/uscd-reach/musicldm), 
+onwards. The official checkpoints can be found on the [Hugging Face Hub](https://huggingface.co/ucsd-reach/musicldm), 
 alongside [documentation](https://huggingface.co/docs/diffusers/main/en/api/pipelines/musicldm) and [examples scripts](https://huggingface.co/docs/diffusers/main/en/api/pipelines/musicldm).
 
 To install Diffusers, Transformers, and Accelerate, run the following:
@@ -119,7 +119,7 @@ and generate text-conditional audio outputs:
 from diffusers import MusicLDMPipeline
 import torch
 
-repo_id = "uscd-reach/musicldm"
+repo_id = "ucsd-reach/musicldm"
 pipe = MusicLDMPipeline.from_pretrained(repo_id, torch_dtype=torch.float16)
 pipe = pipe.to("cuda")
 
