@@ -9,7 +9,11 @@
 
 </p>
 
-MusicLDM is a text-to-music generation model that is only trained on 10000 songs from [Audiostock Dataset](https://github.com/LAION-AI/audio-dataset/blob/main/data_collection/README.md). In the paper, we explore how the text-to-music generation models have the potential behavior to plagarize its training data for the generation output. We propose a latent-audio-mixup method to reduce the plagarism rate and enhance the novelity of the generation.
+MusicLDM is a text-to-music generation model that is only trained on 10000 songs. In the paper, we explore how the text-to-music generation models have the potential behavior to plagarize its training data for the generation output. We propose a latent-audio-mixup method to reduce the plagarism rate and enhance the novelity of the generation.
+
+**Important Notice**
+
+**The Hugging Face support is temporarily shut down, we will notify the time when it is released again.**
 
 Generation demos: [musicldm.github.io](https://musicldm.github.io/).
 
@@ -58,6 +62,8 @@ conda activate musicldm_env
 ### Step 4: Run MusicLDM:
 
 Download all model checkpoints from [this link](https://drive.google.com/drive/folders/15VDVcIgf99YRM5oGXhRxa_Rowl54uWho?usp=sharing)
+
+**The Checkpoint link is temporarily shut down, we will notify the time when it is released again.**
 
 
 Locate at the MusicLDM interface:
