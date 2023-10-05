@@ -11,9 +11,12 @@
 
 MusicLDM is a text-to-music generation model that is only trained on 10000 songs. In the paper, we explore how the text-to-music generation models have the potential behavior to plagarize its training data for the generation output. We propose a latent-audio-mixup method to reduce the plagarism rate and enhance the novelity of the generation.
 
-**Important Notice**
+----
+**Important Notice:**
 
 **The Hugging Face support is temporarily shut down, we will notify the time when it is released again.**
+
+----
 
 Generation demos: [musicldm.github.io](https://musicldm.github.io/).
 
@@ -61,8 +64,6 @@ conda activate musicldm_env
 
 ### Step 4: Run MusicLDM:
 
-Download all model checkpoints from [this link](https://drive.google.com/drive/folders/15VDVcIgf99YRM5oGXhRxa_Rowl54uWho?usp=sharing)
-
 **The Checkpoint link is temporarily shut down, we will notify the time when it is released again.**
 
 
@@ -106,35 +107,6 @@ When using different seeds, usually you will get different generation samples.
 Usually, the generation of MusicLDM will be saved in the folder you specified.
 
 You will find your username folder under this path, and you can check the generation. Don't worry about the replacement of the new generation to the old generation. MusicLDM will save them by creating a new subfolder under your username folder. 
-
-## Hugging Face 🧨 Diffusers
-
-MusicLDM is available in the Hugging Face [🧨 Diffusers](https://github.com/huggingface/diffusers) library from v0.21.0 
-onwards. The official checkpoints can be found on the [Hugging Face Hub](https://huggingface.co/ucsd-reach/musicldm), 
-alongside [documentation](https://huggingface.co/docs/diffusers/main/en/api/pipelines/musicldm) and [examples scripts](https://huggingface.co/docs/diffusers/main/en/api/pipelines/musicldm).
-
-To install Diffusers, Transformers, and Accelerate, run the following:
-```bash
-pip install --upgrade diffusers transformers accelerate
-```
-
-You can then load pre-trained weights into the [MusicLDM pipeline](https://huggingface.co/docs/diffusers/main/en/api/pipelines/audioldm) 
-and generate text-conditional audio outputs:
-
-```python
-from diffusers import MusicLDMPipeline
-import torch
-
-repo_id = "ucsd-reach/musicldm"
-pipe = MusicLDMPipeline.from_pretrained(repo_id, torch_dtype=torch.float16)
-pipe = pipe.to("cuda")
-
-prompt = "Techno music with a strong, upbeat tempo and high melodic riffs"
-audio = pipe(prompt, audio_length_in_s=10.0).audios[0]
-```
-
-The MusicLDM pipeline is compatible with all the inference speed-ups available in the Diffusers library. Check out 
-the following blog post for a guide on optimising a text-to-audio pipeline for up to 30x faster inference: [AudioLDM2, but faster ⚡️](https://huggingface.co/blog/audioldm2).
 
 ## Prompt Guidance
 
