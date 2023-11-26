@@ -9,7 +9,7 @@
 
 </p>
 
-MusicLDM is a text-to-music generation model that is only trained on 10000 songs. In the paper, we explore how the text-to-music generation models have the potential behavior to plagarize its training data for the generation output. We propose a latent-audio-mixup method to reduce the plagarism rate and enhance the novelity of the generation.
+MusicLDM is a text-to-music generation model that is only trained on 10000 songs. In the paper, we explore how the text-to-music generation models have the potential behavior to plagiarize its training data for the generation output. We propose a latent-audio-mixup method to reduce the plagarism rate and enhance the novelity of the generation.
 
 
 Generation demos: [musicldm.github.io](https://musicldm.github.io/).
