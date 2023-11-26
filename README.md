@@ -11,16 +11,10 @@
 
 MusicLDM is a text-to-music generation model that is only trained on 10000 songs. In the paper, we explore how the text-to-music generation models have the potential behavior to plagarize its training data for the generation output. We propose a latent-audio-mixup method to reduce the plagarism rate and enhance the novelity of the generation.
 
-----
-**Important Notice:**
-
-**The Hugging Face support is temporarily shut down, we will notify the time when it is released again.**
-
-----
 
 Generation demos: [musicldm.github.io](https://musicldm.github.io/).
 
-MusicLDM is also supported and embedded in [Hugging Face Diffusers](https://huggingface.co/docs/diffusers/api/pipelines/musicldm) along with the [API](https://huggingface.co/spaces/ircam-reach/musicldm-text-to-music) to quickly try out the generation! We greatly thank the help from [Sanchit Gandhi](https://huggingface.co/sanchit-gandhi) on the Hugging Face implementation!
+MusicLDM is also supported and embedded in [Hugging Face Diffusers](https://huggingface.co/docs/diffusers/api/pipelines/musicldm) along with the [API](https://huggingface.co/spaces/ircam-reach/musicldm-text-to-music) (**temporarily shut down and will be released again**) to quickly try out the generation! We greatly thank the help from [Sanchit Gandhi](https://huggingface.co/sanchit-gandhi) on the Hugging Face implementation!
 
 In this repo, we also provide the inference code to run the MusicLDM. Due to our research policy, we are not able to provide the training script, but you are free to plugin your own audio dataset loader and your own dataset to establish the training of MusicLDM. 
 
