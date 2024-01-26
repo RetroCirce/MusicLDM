@@ -58,7 +58,7 @@ conda activate musicldm_env
 
 ### Step 4: Run MusicLDM:
 
-**The Checkpoint link is temporarily shut down, we will notify the time when it is released again.**
+All checkpoints, including MusicLDM, CLAP, Hifi-GAN and VAE, are saved at [this link](https://drive.google.com/drive/folders/15VDVcIgf99YRM5oGXhRxa_Rowl54uWho?usp=sharing)
 
 
 Locate at the MusicLDM interface:
@@ -120,13 +120,11 @@ We thank these repos for the references of MusicLDM:
 
 If you find this project and the LAION-Audio-630K dataset useful, please cite our paper:
 ```
-@article{musicldm2023,
+@inproceedings{musicldm2024,
   title = {MusicLDM: Enhancing Novelty in Text-to-Music Generation Using Beat-Synchronous Mixup Strategies},
   author = {Chen*, Ke and Wu*, Yusong and Liu*, Haohe and Nezhurina, Marianna and Berg-Kirkpatrick, Taylor and Dubnov, Shlomo},
-  journal   = {CoRR},
-  volume    = {abs/2308.01546},
-  year      = {2023},
-  eprinttype = {arXiv}
+  booktitle={IEEE International Conference on Acoustics, Speech and Signal Processing, ICASSP},
+  year = {2024}
 }
 
 @inproceedings{laionclap2023,
